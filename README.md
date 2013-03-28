@@ -23,14 +23,10 @@ Required parameters:
 <?php
 'Evernote' => array(
   'client_id' => 'YOUR CLIENT ID',
-  'client_secret' => 'YOUR CLIENT SECRET'
+  'client_secret' => 'YOUR CLIENT SECRET',
+  'sandbox' => [TRUE or FALSE]
 )
 ```
-
-Optional parameters:
-`scope`, `response_type`  
-For `scope`, separate each scopes with a space(' ') and not a plus sign ('+'). Eg. `likes comments`.
-
 
 References
 ----------

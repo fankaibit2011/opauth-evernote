@@ -73,7 +73,7 @@ class EvernoteStrategy extends OpauthStrategy
         $this->strategy['consumer_key'] = $this->strategy['api_key'];
         $this->strategy['consumer_secret'] = $this->strategy['secret_key'];
 
-        if ($this->strategy['sandbox'] == false) {
+        if (!$this->strategy['sandbox']) {
             $this->strategy['base_url'] = 'https://www.evernote.com/';
         }
         $this->strategy['request_token_url'] = $this->strategy['base_url'].$this->strategy['request_token_path'];
@@ -182,15 +182,15 @@ class EvernoteStrategy extends OpauthStrategy
     {
         $code = $this->tmhOAuth->request($method, $url, $params, $useauth, $multipart);
 
-        if (is_null($handler)) {
-            if (strpos($url, '.json') !== false) {
-                $handler = 'json';
-            } elseif (strpos($url, '.xml') !== false) {
-                $handler = 'xml';
-            }
-        }
-
         if ($code == 200) {
+            if (is_null($handler)) {
+                if (strpos($url, '.json') !== false) {
+                    $handler = 'json';
+                } elseif (strpos($url, '.xml') !== false) {
+                    $handler = 'xml';
+                }
+            }
+
             if ($handler == 'json') {
                 $response = json_decode($this->tmhOAuth->response['response']);
             } elseif ($handler == 'xml') {

@@ -11,6 +11,23 @@
  * @license      MIT License
  */
 
+
+/**
+ * @return bool
+ */
+function is_session_started()
+{
+    if ( php_sapi_name() !== 'cli' ) {
+        if ( version_compare(phpversion(), '5.4.0', '>=') ) {
+            return session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
+        } else {
+            return session_id() === '' ? FALSE : TRUE;
+        }
+    }
+    return FALSE;
+}
+
+
 /**
  * Evernote strategy for Opauth
  * based on http://dev.evernote.com/start/core/authentication.php
@@ -96,7 +113,9 @@ class EvernoteStrategy extends OpauthStrategy
         $results =  $this->_request('POST', $this->strategy['request_token_url'], $params);
 
         if ($results !== false && !empty($results['oauth_token']) && !empty($results['oauth_token_secret'])) {
-            session_start();
+            if (is_session_started() === FALSE) {
+                session_start();
+            }
             $_SESSION['_opauth_evernote'] = $results;
 
             $this->_authorize($results['oauth_token']);
@@ -108,7 +127,9 @@ class EvernoteStrategy extends OpauthStrategy
      */
     public function oauth_callback()
     {
-        session_start();
+        if (is_session_started === FALSE) {
+            session_start();
+        }
         $session = $_SESSION['_opauth_evernote'];
         unset($_SESSION['_opauth_evernote']);
 

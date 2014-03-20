@@ -127,7 +127,7 @@ class EvernoteStrategy extends OpauthStrategy
      */
     public function oauth_callback()
     {
-        if (is_session_started === FALSE) {
+        if (is_session_started() === FALSE) {
             session_start();
         }
         $session = $_SESSION['_opauth_evernote'];

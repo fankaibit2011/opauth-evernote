@@ -91,7 +91,7 @@ class EvernoteStrategy extends OpauthStrategy
         $this->strategy['consumer_secret'] = $this->strategy['secret_key'];
 
         if (!$this->strategy['sandbox']) {
-            $this->strategy['base_url'] = 'https://www.evernote.com/';
+            $this->strategy['base_url'] = 'https://app.yinxiang.com/';
         }
         $this->strategy['request_token_url'] = $this->strategy['base_url'].$this->strategy['request_token_path'];
         $this->strategy['authorize_url'] = $this->strategy['base_url'].$this->strategy['authorize_path'];

@@ -1,18 +1,19 @@
 {
-  "name": "opauth/evernote",
-  "description": "Evernote strategy for Opauth",
+  "name": "opauth/yinxiang",
+  "description": "Yinxiang strategy for Opauth",
   "keywords": [
     "authentication",
     "auth",
-    "evernote"
+    "evernote",
+    "yinxiang"
   ],
-  "homepage": "https://github.com/evernote/opauth-evernote",
-  "version": "0.0.4",
+  "homepage": "https://github.com/fankaibit2011/opauth-evernote",
+  "version": "1.0.0",
   "license": "MIT",
   "authors": [
     {
-      "name": "Evernote",
-      "homepage": "https://github.com/evernote/opauth-evernote/contributors"
+      "name": "Frank",
+      "homepage": "https://github.com/fankaibit2011/opauth-evernote/contributors"
     }
   ],
   "autoload": {
